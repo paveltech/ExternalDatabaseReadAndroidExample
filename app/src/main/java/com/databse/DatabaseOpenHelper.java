@@ -15,4 +15,10 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper{
     public DatabaseOpenHelper(Context context) {
         super(context, DATABSE_NAME ,null, DATABASE_VERSION);
     }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+    }
+
 }

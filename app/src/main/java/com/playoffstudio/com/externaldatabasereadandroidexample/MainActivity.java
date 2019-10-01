@@ -19,6 +19,7 @@ import com.pojo.Pojo;
 import java.util.ArrayList;
 import java.util.List;
 
+import another.way.MyDatabase;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     public MyAdapter adapter;
     public List<Pojo> pojoList;
-    public DatabaseAccess databaseAccess;
+    //public DatabaseAccess databaseAccess;
+
+    public MyDatabase myDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        myDatabase = new MyDatabase(getApplicationContext());
+
         ButterKnife.bind(this);
         pojoList = new ArrayList<>();
 
-        databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-        pojoList = databaseAccess.getEmploye();
+        //databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+
+
+        pojoList = myDatabase.getEmploye();
+
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new MyAdapter(getApplicationContext() , pojoList);

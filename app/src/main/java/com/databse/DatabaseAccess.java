@@ -50,10 +50,8 @@ public class DatabaseAccess  {
             cursor.moveToNext();
         }
         cursor.close();
-
         return productList;
     }
-
 
     public List<Pojo> getEmploye(){
         Pojo product = null;
